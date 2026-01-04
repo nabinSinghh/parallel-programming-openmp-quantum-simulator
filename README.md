@@ -52,7 +52,7 @@ C++ source code implementing the OpenMP-parallel quantum simulator:
   The University of Alabama in Huntsville (UAH)
 
 - **Atit Pokharel**  
-  M.S. Student, Electrical and Computer Engineering  
+  Ph.D. Student, Electrical and Computer Engineering  
   The University of Alabama in Huntsville (UAH)
 
 
