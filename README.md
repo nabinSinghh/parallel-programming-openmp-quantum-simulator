@@ -3,59 +3,45 @@
 This project demonstrates **shared-memory parallel programming using OpenMP** in C++.  
 A quantum state-vector simulator is used as the application to study **parallelism, scalability, and performance trade-offs** on multi-core CPUs.
 
-The focus of this project is on **OpenMP-based parallelization**, performance analysis, and efficiency—not on quantum computing theory itself.
+The focus of this project is on **OpenMP-based parallelization, performance analysis, and efficiency**, rather than quantum computing theory itself.
 
-📄 **Project Report:** `report/Parallel_prog_mini_project.pdf`
+📄 **Project Report:** `OpenMP_Quantum_Simulator_Report.pdf`
 
 ---
 
 ## Project Objectives
 
-- Apply **OpenMP parallel programming concepts** in a non-trivial computational workload
-- Identify parallelizable regions and eliminate data hazards
-- Measure **speedup, efficiency, and cost**
+- Apply **OpenMP parallel programming concepts** to a computationally intensive workload
+- Identify parallelizable regions while avoiding race conditions
+- Measure **speedup, efficiency, and scalability**
 - Study the impact of:
-  - Number of threads
-  - Problem size (qubits)
-  - Circuit depth
+  - Number of OpenMP threads
+  - Problem size (number of qubits)
+  - Circuit depth (layers)
 
 ---
 
 ## Repository Structure
 
 ### `src/`
-C++ source code implementing the parallel simulator:
-- `quantum_circuit.h` – Data structures and interfaces
-- `quantum_circuit.cpp` – OpenMP-parallelized gate operations
-- `simple_quantum_circuit.cpp` – Benchmark driver program
+C++ source code implementing the OpenMP-parallel quantum simulator:
+- `quantum_circuit.h` – Core data structures and function declarations
+- `quantum_circuit.cpp` – OpenMP-parallelized quantum gate implementations
+- `simple_quantum_circuit.cpp` – Benchmark driver and experiment harness
 
 ---
 
 ### `scripts/`
-- `run_benchmark.sh` – Automates execution across different OpenMP thread counts
-
----
-
-### `results/`
-- `benchmark_results.txt` – Collected runtime measurements for analysis
-
----
-
-### `report/`
-- `Parallel_prog_mini_project.pdf` – Detailed report covering:
-  - OpenMP parallelization strategy
-  - Loop decomposition and scheduling
-  - Synchronization considerations
-  - Experimental results and scalability analysis
+- `run_benchmark.sh` – Automates compilation and execution across different thread counts
 
 ---
 
 ## OpenMP Parallelization Strategy
 
 - Used **OpenMP `parallel for`** to distribute state-vector updates
-- Single-qubit gates parallelized using data-parallel loops
-- Two-qubit gates implemented with race-condition-safe memory access
-- Performance evaluated under varying thread counts
+- Single-qubit gates parallelized using data-parallel loop decomposition
+- Two-qubit (CNOT) gates implemented with race-condition-safe memory access
+- Performance evaluated across varying thread counts and problem sizes
 
 ---
 
@@ -63,4 +49,4 @@ C++ source code implementing the parallel simulator:
 
 ### Compile
 ```bash
-g++ -O3 -fopenmp simple_quantum_circuit.cpp quantum_circuit.cpp -o simulator
+g++ -O3 -fopenmp src/simple_quantum_circuit.cpp src/quantum_circuit.cpp -o simulator
